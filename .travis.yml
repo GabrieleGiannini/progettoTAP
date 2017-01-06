@@ -1,0 +1,7 @@
+language: java
+
+#skip installation step
+install: true
+
+script:
+- mvn -f tap-project/pom.xml clean verify
