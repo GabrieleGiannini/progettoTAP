@@ -1,0 +1,16 @@
+language: java
+
+sudo: false
+
+cache:
+  directories:
+  - $HOME/.m2
+
+#skip installation step
+install: true
+
+jdk:
+- oraclejdk8
+
+script:
+- mvn -f tap-project/pom.xml clean verify
