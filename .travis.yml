@@ -13,4 +13,4 @@ jdk:
 - oraclejdk8
 
 script:
-- mvn -f tap-project/pom.xml clean verify
+- mvn -f tap-project/pom.xml clean verify -Pjacoco coveralls:report
