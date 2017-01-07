@@ -1,31 +1,28 @@
 package tap.gianninicinquilli.tap_project;
 
-public class Dish{
+public class Dish {
 
-	private String Name;
-	private String IDFood;
-	private double Price;
+	private String foodID;
+	private double price;
 
-	public Dish(String string) {
-	
-	}
-
-	public Dish(String name, String idfood,double price) {
-		Name = name;
-		IDFood = idfood;
-		Price = price;
-	}
-
-	public String getIDFOOD() {
-		return IDFood;
+	public Dish(String FoodID) {
+		foodID = FoodID;
 	}
 
 	public void setPrice(double price) {
-		Price = price;
+		
 	}
 
 	public double getPrice() {
-		return Price;
+		return price;
+	}
+
+	public String getCategory() {
+		return null;
+	}
+
+	public void setCategory(String category) {
+		
 	}
 
 }
