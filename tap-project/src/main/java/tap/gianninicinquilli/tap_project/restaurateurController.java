@@ -6,22 +6,25 @@ public class restaurateurController {
 
 	private restaurateurProfile resProfile;
 	private List<Dish> menu;
+	private Database database;
 
-	public restaurateurController(restaurateurProfile resProfile) {
+	public restaurateurController(restaurateurProfile resProfile, Database database) {
 		this.resProfile = resProfile;
+		this.database = database;
 	}
 
-	public void addFoodToMenu(List<Dish> menu, Dish dish) {
+	public void addFoodToMenu(Dish dish) {
+		setMenu();
 		if(menu.contains(dish)){
 			this.menu = menu;
 		}else{
 			menu.add(dish);
-			this.menu = menu;
 		}
 	}
 
 
-	public double changePriceToFood(List<Dish> menu, Dish dish, double price) {
+	public double changePriceToFood(Dish dish, double price) {
+		setMenu();
 		if(menu.contains(dish)){
 			dish.setPrice(price);
 			return price;
@@ -30,8 +33,9 @@ public class restaurateurController {
 		}
 	}
 
-	public String changeCategoryToFood(List<Dish> menu2, Dish dish, String category) {
-		if(menu2.contains(dish)){
+	public String changeCategoryToFood(Dish dish, String category) {
+		setMenu();
+		if(menu.contains(dish)){
 			dish.setCategory(category);
 			return category;
 		}else{
@@ -43,8 +47,8 @@ public class restaurateurController {
 		return menu;
 	}
 	
-	public void setMenu(List<Dish> menu2) {
-		this.menu = menu2;
+	public void setMenu() {
+		this.menu = database.getMenu();
 	}
 	
 }

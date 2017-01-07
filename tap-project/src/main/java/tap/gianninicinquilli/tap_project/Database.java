@@ -6,4 +6,8 @@ public interface Database {
 
 	List<Dish> getMenu();
 
+	List<Dish> getMenuOf(Restaurant restaurant);
+
+	List<Restaurant> getRestaurantsList();
+
 }
