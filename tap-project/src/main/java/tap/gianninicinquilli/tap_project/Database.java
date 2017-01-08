@@ -8,4 +8,10 @@ public interface Database {
 
 	List<Restaurant> getRestaurantsList();
 
+	int addReview(UserProfile userProfile, Restaurant rest, String review);
+
+	void updateReview(int reviewId, String newReview);
+
+	List<String> getReviews(UserProfile userProfile);
+
 }

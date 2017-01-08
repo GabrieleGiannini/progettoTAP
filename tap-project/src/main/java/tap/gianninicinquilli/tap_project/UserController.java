@@ -40,7 +40,17 @@ public class UserController {
 		informations.add(user.getOrderHistory().toString());
 		return informations;
 	}
-	
-	
+
+	public int newReview(Restaurant rest, String review) {
+		return database.addReview(user, rest, review);
+	}
+
+	public void updateReview(int reviewId, String newReview) {
+		database.updateReview(reviewId, newReview);
+	}
+
+	public List<String> getReviews() {
+		return database.getReviews(user);
+	}
 
 }
