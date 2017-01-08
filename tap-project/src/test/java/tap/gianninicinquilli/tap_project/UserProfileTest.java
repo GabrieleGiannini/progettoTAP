@@ -28,10 +28,5 @@ public class UserProfileTest {
 		assertEquals(orderHistory, userProfile.getOrderHistory());
 	}
 	
-	@Test
-	public void getPassword() {
-		assertEquals(PASSWORD, userProfile.getPassword());
-	}
-	
 
 }

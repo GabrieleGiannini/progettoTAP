@@ -26,10 +26,4 @@ public class UserProfile {
 		return orderHistory;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-	
-	
-
 }

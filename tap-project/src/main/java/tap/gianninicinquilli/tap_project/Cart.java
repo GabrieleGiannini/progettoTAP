@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.mockito.Matchers;
 
-public class Chart extends ArrayList<Dish>{
+public class Cart extends ArrayList<Dish>{
 
 
 }

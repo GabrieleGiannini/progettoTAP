@@ -2,30 +2,24 @@ package tap.gianninicinquilli.tap_project;
 
 import java.util.List;
 
-public class restaurateurController {
+public class RestaurateurController {
 
-	private restaurateurProfile resProfile;
-	private List<Dish> menu;
+	private RestaurateurProfile resProfile;
 	private Database database;
 
-	public restaurateurController(restaurateurProfile resProfile, Database database) {
+	public RestaurateurController(RestaurateurProfile resProfile, Database database) {
 		this.resProfile = resProfile;
 		this.database = database;
 	}
 
 	public void addFoodToMenu(Dish dish) {
-		setMenu();
-		if(menu.contains(dish)){
-			this.menu = menu;
-		}else{
-			menu.add(dish);
-		}
+		if(!getMenuFromDB().contains(dish))
+			getMenuFromDB().add(dish);
 	}
 
 
 	public double changePriceToFood(Dish dish, double price) {
-		setMenu();
-		if(menu.contains(dish)){
+		if(getMenuFromDB().contains(dish)){
 			dish.setPrice(price);
 			return price;
 		}else{
@@ -34,8 +28,7 @@ public class restaurateurController {
 	}
 
 	public String changeCategoryToFood(Dish dish, String category) {
-		setMenu();
-		if(menu.contains(dish)){
+		if(getMenuFromDB().contains(dish)){
 			dish.setCategory(category);
 			return category;
 		}else{
@@ -43,12 +36,9 @@ public class restaurateurController {
 		}
 	}
 
-	public List<Dish> getMenu() {
-		return menu;
+	public List<Dish> getMenuFromDB() {
+		return database.getMenuOf(resProfile.getRestaurant());
 	}
-	
-	public void setMenu() {
-		this.menu = database.getMenu();
-	}
+
 	
 }

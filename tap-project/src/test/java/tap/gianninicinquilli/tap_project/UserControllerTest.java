@@ -46,30 +46,23 @@ public class UserControllerTest {
 	
 	@Test
 	public void testGetChart(){
-		Chart chart = new Chart();
+		Cart chart = new Cart();
 		user.setChart(chart);
 		assertEquals(chart,user.getChart());
 	}
 	
 	@Test
 	public void testSendDishToChart(){
-		Chart chart = new Chart();
+		Cart chart = new Cart();
 		Dish dish1 = new Dish("Food1");
 		user.setChart(chart);
 		user.sendDishToChart(dish1);
 		assertTrue(user.getChart().contains(dish1));
 	}
 	
-	@Test
-	public void testGetUserInformationsHistoryNullCase(){
-		List<String> informations = new ArrayList<String>();
-		informations.add("Gabriele");
-		informations.add(null);
-		assertEquals(informations, user.getInformations());
-	}
 	
 	@Test
-	public void testGetUserInformationsHistoryNotNullCase(){
+	public void testGetUserInformations(){
 		UserController user2 = new UserController(db,new UserProfile("Gabriele", "Pass", new ArrayList<Order>()));
 		List<String> informations = new ArrayList<String>();
 		informations.add("Gabriele");

@@ -5,11 +5,11 @@ public class Dish {
 	private String foodID;
 	private double price;
 
-	public Dish(String FoodID) {
-		foodID = FoodID;
+	public Dish(String foodID) {
+		this.foodID = foodID;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(double price) {//empty because is stubbed
 		
 	}
 
@@ -21,7 +21,7 @@ public class Dish {
 		return null;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(String category) {//empty because is stubbed
 		
 	}
 

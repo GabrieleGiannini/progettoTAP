@@ -5,12 +5,14 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class restaurateurProfileTest {
-	restaurateurProfile resProfile;
+public class RestaurateurProfileTest {
+	private RestaurateurProfile resProfile;
+	private Restaurant rest;
 	
 	@Before
 	public void setup(){
-		resProfile = new restaurateurProfile("IDG","Pass","GabrieleGianniniRes","Via Roma, 1","Firenze","0556509341","gabrielegiannini2@gmail.com");
+		rest = new Restaurant();
+		resProfile = new RestaurateurProfile("IDG","Pass","GabrieleGianniniRes","Via Roma, 1","Firenze","0556509341","gabrielegiannini2@gmail.com",rest);
 	}
 
 	@Test
@@ -29,18 +31,23 @@ public class restaurateurProfileTest {
 	}
 	
 	@Test
-	public void getAddress(){
+	public void getAddressTest(){
 		assertEquals("Via Roma, 1",resProfile.getAddres());
 	}
 	
 	@Test
-	public void getCity(){
+	public void getCityTest(){
 		assertEquals("Firenze",resProfile.getCity());
 	}
 	
 	@Test
-	public void getTelNumb(){
+	public void getTelNumbTest(){
 		assertEquals("0556509341",resProfile.getTelNumb());
+	}
+	
+	@Test
+	public void getRestaurantTest(){
+		assertEquals(rest,resProfile.getRestaurant());
 	}
 
 }
