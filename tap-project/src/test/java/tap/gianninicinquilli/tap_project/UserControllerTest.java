@@ -36,19 +36,13 @@ public class UserControllerTest {
 	}
 	
 	@Test
-	public void GetMenuOfExistsTestCase(){
+	public void GetMenuOf(){
 		restList.add(rest);
 		List<Dish> result = user.getMenuOf(rest);
 		verify(db, times(1)).getMenuOf(rest);
 		assertEquals(menu, result);
 	}
-	
-	@Test
-	public void GetMenuOfNotExistsTestCase(){
-		List<Dish> result = user.getMenuOf(rest);
-		verify(db, times(0)).getMenuOf(rest);
-		assertEquals(null, result);
-	}
+
 	
 	@Test
 	public void testGetChart(){
@@ -67,12 +61,20 @@ public class UserControllerTest {
 	}
 	
 	@Test
-	public void testGetUserInformations(){
+	public void testGetUserInformationsHistoryNullCase(){
 		List<String> informations = new ArrayList<String>();
 		informations.add("Gabriele");
-		informations.add("Pass");
 		informations.add(null);
 		assertEquals(informations, user.getInformations());
+	}
+	
+	@Test
+	public void testGetUserInformationsHistoryNotNullCase(){
+		UserController user2 = new UserController(db,new UserProfile("Gabriele", "Pass", new ArrayList<Order>()));
+		List<String> informations = new ArrayList<String>();
+		informations.add("Gabriele");
+		informations.add(new ArrayList<Order>().toString());
+		assertEquals(informations, user2.getInformations());
 	}
 	
 

@@ -21,11 +21,7 @@ public class UserController {
 	}
 
 	public List<Dish> getMenuOf(Restaurant restaurant) {
-		if(getRestaurantsList().contains(restaurant)){
 			return database.getMenuOf(restaurant);
-		}else{
-			return null;
-		}
 	}
 
 	public void sendDishToChart(Dish dish1) {
@@ -43,8 +39,6 @@ public class UserController {
 	public List<String> getInformations() {
 		List<String> informations = new ArrayList<String>();
 		informations.add(user.getUser());
-		informations.add(user.getPassword());
-		
 		if(user.getOrderHistory()!=null){
 			informations.add(user.getOrderHistory().toString());
 		}else{
