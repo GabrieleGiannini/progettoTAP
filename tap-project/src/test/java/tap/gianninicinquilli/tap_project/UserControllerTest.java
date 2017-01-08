@@ -46,14 +46,14 @@ public class UserControllerTest {
 	
 	@Test
 	public void testGetChart(){
-		Cart chart = new Cart();
+		Cart chart = new Cart(null,null);
 		user.setChart(chart);
 		assertEquals(chart,user.getChart());
 	}
 	
 	@Test
 	public void testSendDishToChart(){
-		Cart chart = new Cart();
+		Cart chart = new Cart(null,null);
 		Dish dish1 = new Dish("Food1");
 		user.setChart(chart);
 		user.sendDishToChart(dish1);

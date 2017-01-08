@@ -6,7 +6,7 @@ import java.util.List;
 public class UserController {
 
 	private Database database;
-	private Cart chart;
+	private Cart cart;
 	private UserProfile user;
 
 	public UserController(Database db,UserProfile user) {
@@ -23,15 +23,15 @@ public class UserController {
 	}
 
 	public void sendDishToChart(Dish dish1) {
-		chart.add(dish1);
+		cart.add(dish1);
 	}
 
 	public Cart getChart() {
-		return chart;
+		return cart;
 	}
 
 	public void setChart(Cart chart) {
-		this.chart = chart;
+		this.cart = chart;
 	}
 
 	public List<String> getInformations() {
@@ -40,6 +40,7 @@ public class UserController {
 		informations.add(user.getOrderHistory().toString());
 		return informations;
 	}
+	
 	
 	
 
