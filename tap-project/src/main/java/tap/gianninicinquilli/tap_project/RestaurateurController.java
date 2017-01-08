@@ -39,6 +39,5 @@ public class RestaurateurController {
 	public List<Dish> getMenuFromDB() {
 		return database.getMenuOf(resProfile.getRestaurant());
 	}
-
 	
 }

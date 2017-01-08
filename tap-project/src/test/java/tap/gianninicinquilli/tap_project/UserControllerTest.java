@@ -46,18 +46,18 @@ public class UserControllerTest {
 	
 	@Test
 	public void testGetChart(){
-		Cart chart = new Cart(null,null);
-		user.setChart(chart);
-		assertEquals(chart,user.getChart());
+		Cart cart = new Cart(null,null);
+		user.setCart(cart);
+		assertEquals(cart,user.getCart());
 	}
 	
 	@Test
 	public void testSendDishToChart(){
-		Cart chart = new Cart(null,null);
+		Cart cart = new Cart(null,null);
 		Dish dish1 = new Dish("Food1");
-		user.setChart(chart);
+		user.setCart(cart);
 		user.sendDishToChart(dish1);
-		assertTrue(user.getChart().contains(dish1));
+		assertTrue(user.getCart().contains(dish1));
 	}
 	
 	

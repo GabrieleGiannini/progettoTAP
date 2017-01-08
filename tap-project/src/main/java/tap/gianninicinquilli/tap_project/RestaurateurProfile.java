@@ -51,6 +51,4 @@ public class RestaurateurProfile {
 		return restaurant;
 	}
 
-	
-	
 }
