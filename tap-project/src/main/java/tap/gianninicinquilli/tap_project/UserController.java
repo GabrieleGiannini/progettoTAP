@@ -26,12 +26,12 @@ public class UserController {
 		cart.add(dish1);
 	}
 
-	public Cart getChart() {
+	public Cart getCart() {
 		return cart;
 	}
 
-	public void setChart(Cart chart) {
-		this.cart = chart;
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
 
 	public List<String> getInformations() {
