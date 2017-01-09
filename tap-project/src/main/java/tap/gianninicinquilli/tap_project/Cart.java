@@ -26,7 +26,6 @@ public class Cart extends ArrayList<Dish>{
 	public boolean pay() {
 		boolean paymentAcceppted;
 		boolean paymentReceived = false;
-		calculateTotal();
 		paymentAcceppted = bank.acceptPayment(creditCard);
 		if(paymentAcceppted)
 			paymentReceived = bank.receivedPayment(calculateTotal());
