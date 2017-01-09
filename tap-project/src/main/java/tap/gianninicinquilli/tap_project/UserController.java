@@ -34,8 +34,8 @@ public class UserController {
 		this.cart = cart;
 	}
 	
-	public void pay(){
-		cart.pay();
+	public boolean pay(){
+		return cart.pay();
 	}
 
 	public List<String> getInformations() {

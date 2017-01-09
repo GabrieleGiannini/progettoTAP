@@ -104,5 +104,13 @@ public class UserControllerTest {
 		verify(db, times(1)).getReviews(userProfile);
 		assertEquals(reviews, result);
 	}
+	
+	@Test
+	public void testPay(){
+		Cart cart = mock(Cart.class);
+		user.setCart(cart);
+		when(cart.pay()).thenReturn(true);
+		assertTrue(user.pay());
+	}
 
 }
