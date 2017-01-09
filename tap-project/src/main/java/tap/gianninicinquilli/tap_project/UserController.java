@@ -33,6 +33,10 @@ public class UserController {
 	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
+	
+	public boolean pay(){
+		return cart.pay();
+	}
 
 	public List<String> getInformations() {
 		List<String> informations = new ArrayList<>();
