@@ -79,15 +79,66 @@
 							</execution>
 						</executions>
 					</plugin>
+					
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
 						<version>2.19.1</version>
-						<configuration>
-							<!-- Sets the VM argument line used when unit tests are run. -->
-							<argLine>${surefireArgLine}</argLine>
-						</configuration>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>shade</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
+					
+					<plugin>
+  						<groupId>org.apache.maven.plugins</groupId>
+  						<artifactId>maven-assembly-plugin</artifactId>
+  						<configuration>
+    						<descriptorRefs>
+      							<descriptorRef>jar-with-dependencies</descriptorRef>
+    						</descriptorRefs>
+    						<archive>
+      							<manifest>
+        							<mainClass>com.mycompany.app.App</mainClass> <!-- si specifica qui il qualified name in modo da non doverlo fare sul terminale -->
+      							</manifest>
+    						</archive>
+  						</configuration>
+  					<executions>
+    					<execution>
+      						<phase>package</phase>
+      						<goals>
+       							 <goal>single</goal>
+      						</goals>
+    					</execution>
+ 					 </executions>
+					</plugin>
+					
+					<plugin>
+  						<groupId>org.codehaus.mojo</groupId>
+  						<artifactId>exec-maven-plugin</artifactId>
+  						<version>1.5.0</version>
+  						<executions>
+    						<execution>
+      						<id>runJarWithDependencies</id>
+      						<phase>verify</phase>
+      						<goals>
+        						<goal>exec</goal>
+      						</goals>
+    						</execution>
+  						</executions>
+  						<configuration><!-- mojo nella fase verify esegue da terminale il jar specificato specificando anche il fatjar, il qualified non serve perchè c'è già scritto nel fatjar -->
+    						<executable>java</executable>
+    						<arguments>
+      						<argument>-jar</argument>
+      						<argument>${project.build.directory}/${project.artifactId}-${project.version}-jar-with-dependencies.jar</argument>
+    						</arguments>
+  						</configuration>
+						</plugin>
+		
 				</plugins>
 			</build>
 		</profile>
