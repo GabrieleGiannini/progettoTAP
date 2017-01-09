@@ -28,5 +28,7 @@ public class UserProfileTest {
 		assertEquals(orderHistory, userProfile.getOrderHistory());
 	}
 	
+	
+	
 
 }

@@ -33,6 +33,10 @@ public class UserController {
 	public void setChart(Cart chart) {
 		this.cart = chart;
 	}
+	
+	public void pay(){
+		cart.pay();
+	}
 
 	public List<String> getInformations() {
 		List<String> informations = new ArrayList<>();

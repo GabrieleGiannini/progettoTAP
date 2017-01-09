@@ -4,4 +4,6 @@ public interface Bank {
 
 	boolean acceptPayment(CreditCard creditCard);
 
+	boolean receivedPayment(double d);
+
 }
