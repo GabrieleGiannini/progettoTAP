@@ -14,13 +14,13 @@ public class RestaurateurController {
 
 	public void addFoodToMenu(Dish dish) {
 		if(!getMenuFromDB().contains(dish))
-			getMenuFromDB().add(dish);
+			database.addDishToMenu(resProfile.getRestaurant(), dish);
 	}
 
 
 	public double changePriceToFood(Dish dish, double price) {
 		if(getMenuFromDB().contains(dish)){
-			dish.setPrice(price);
+			database.updatePriceToFood(resProfile.getRestaurant(), dish, price);
 			return price;
 		}else{
 			return 0;
@@ -29,7 +29,7 @@ public class RestaurateurController {
 
 	public String changeCategoryToFood(Dish dish, String category) {
 		if(getMenuFromDB().contains(dish)){
-			dish.setCategory(category);
+			database.updateCategoryToFood(resProfile.getRestaurant(), dish, category);
 			return category;
 		}else{
 			return null;
@@ -40,5 +40,8 @@ public class RestaurateurController {
 		return database.getMenuOf(resProfile.getRestaurant());
 	}
 
+	public List<String> getReviews() {
+		return database.getReviews(resProfile.getRestaurant());
+	}
 	
 }

@@ -16,13 +16,15 @@ public class UserControllerTest {
 	private List<Restaurant> restList;
 	private Restaurant rest;
 	private List<Dish> menu;
+	private UserProfile userProfile;
 
 	@Before
 	public void setUp() throws Exception {
 		db = mock(Database.class);
 		rest = mock(Restaurant.class);
 		menu = new ArrayList<>();
-		user = new UserController(db,new UserProfile("Gabriele", "Pass", null));
+		userProfile = mock(UserProfile.class);
+		user = new UserController(db,userProfile);
 		restList = new ArrayList<>();
 		when(db.getRestaurantsList()).thenReturn(restList);
 		when(db.getMenuOf(rest)).thenReturn(menu);
@@ -46,29 +48,61 @@ public class UserControllerTest {
 	
 	@Test
 	public void testGetChart(){
-		Cart chart = new Cart(null,null);
-		user.setChart(chart);
-		assertEquals(chart,user.getChart());
+		Cart cart = new Cart(null,null);
+		user.setCart(cart);
+		assertEquals(cart,user.getCart());
 	}
 	
 	@Test
 	public void testSendDishToChart(){
-		Cart chart = new Cart(null,null);
+		Cart cart = new Cart(null,null);
 		Dish dish1 = new Dish("Food1");
-		user.setChart(chart);
+		user.setCart(cart);
 		user.sendDishToChart(dish1);
-		assertTrue(user.getChart().contains(dish1));
+		assertTrue(user.getCart().contains(dish1));
 	}
-	
 	
 	@Test
 	public void testGetUserInformations(){
-		UserController user2 = new UserController(db,new UserProfile("Gabriele", "Pass", new ArrayList<Order>()));
 		List<String> informations = new ArrayList<String>();
 		informations.add("Gabriele");
-		informations.add(new ArrayList<Order>().toString());
-		assertEquals(informations, user2.getInformations());
+		informations.add(new ArrayList<>().toString());
+		when(userProfile.getUser()).thenReturn("Gabriele");
+		when(userProfile.getOrderHistory()).thenReturn(new ArrayList<>());
+		assertEquals(informations, user.getInformations());
 	}
 	
+	@Test
+	public void testNewReview(){
+		when(db.addReview(userProfile, rest, "Good!")).thenReturn(1);
+		int revId = user.newReview(rest, "Good!");
+		verify(db, times(1)).addReview(userProfile, rest, "Good!");
+		assertEquals(1, revId);
+	}
+	
+	@Test
+	public void testUpdateReview(){
+		user.updateReview(1, "Really good!");
+		verify(db, times(1)).updateReview(1, "Really good!");
+	}
+	
+	@Test
+	public void testEmptyGetReviews(){
+		when(db.getReviews(userProfile)).thenReturn(new ArrayList<>());
+		List<String> result = user.getReviews();
+		verify(db, times(1)).getReviews(userProfile);
+		assertEquals(new ArrayList<>(), result);
+	}
+	
+	@Test 
+	public void testNotEmptyGetReviews(){
+		List<String> reviews = new ArrayList<>();
+		reviews.add("Good");
+		reviews.add("Not bad");
+		when(db.getReviews(userProfile)).thenReturn(reviews);
+		List<String> result = user.getReviews();
+		verify(db, times(1)).getReviews(userProfile);
+		assertEquals(reviews, result);
+	}
 
 }

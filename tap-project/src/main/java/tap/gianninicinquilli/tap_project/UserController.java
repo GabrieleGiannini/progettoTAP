@@ -26,12 +26,12 @@ public class UserController {
 		cart.add(dish1);
 	}
 
-	public Cart getChart() {
+	public Cart getCart() {
 		return cart;
 	}
 
-	public void setChart(Cart chart) {
-		this.cart = chart;
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
 	
 	public void pay(){
@@ -44,8 +44,17 @@ public class UserController {
 		informations.add(user.getOrderHistory().toString());
 		return informations;
 	}
-	
-	
-	
+
+	public int newReview(Restaurant rest, String review) {
+		return database.addReview(user, rest, review);
+	}
+
+	public void updateReview(int reviewId, String newReview) {
+		database.updateReview(reviewId, newReview);
+	}
+
+	public List<String> getReviews() {
+		return database.getReviews(user);
+	}
 
 }
