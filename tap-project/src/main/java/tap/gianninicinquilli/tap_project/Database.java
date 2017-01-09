@@ -8,4 +8,6 @@ public interface Database {
 
 	List<Restaurant> getRestaurantsList();
 
+	void addDishToMenu(Restaurant restaurant, Dish dish);
+
 }

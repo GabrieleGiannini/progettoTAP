@@ -42,16 +42,15 @@ public class RestaurateurControllerTest {
 		List<Dish> menu = new ArrayList<Dish>(this.menu);
 		resController.addFoodToMenu(dish2);
 		menu.add(dish2);
-		verify(database,times(2)).getMenuOf(resProfile.getRestaurant());
-		assertEquals(menu, resController.getMenuFromDB());
+		verify(database,times(1)).getMenuOf(resProfile.getRestaurant());
+		verify(database, times(1)).addDishToMenu(resProfile.getRestaurant(), dish2);
 	}
 	
 	@Test
 	public void addFoodToMenuAlreadyExistsTestCase() {
-		List<Dish> menu = new ArrayList<Dish>(this.menu);
 		resController.addFoodToMenu(dish1);
 		verify(database,times(1)).getMenuOf(resProfile.getRestaurant());
-		assertEquals(menu, resController.getMenuFromDB());
+		verify(database, never()).addDishToMenu(resProfile.getRestaurant(), dish1);
 	}
 	
 	@Test

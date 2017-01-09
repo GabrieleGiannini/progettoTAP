@@ -14,7 +14,7 @@ public class RestaurateurController {
 
 	public void addFoodToMenu(Dish dish) {
 		if(!getMenuFromDB().contains(dish))
-			getMenuFromDB().add(dish);
+			database.addDishToMenu(resProfile.getRestaurant(), dish);
 	}
 
 
