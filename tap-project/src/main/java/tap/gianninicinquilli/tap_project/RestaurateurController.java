@@ -29,7 +29,7 @@ public class RestaurateurController {
 
 	public String changeCategoryToFood(Dish dish, String category) {
 		if(getMenuFromDB().contains(dish)){
-			dish.setCategory(category);
+			database.updateCategoryToFood(resProfile.getRestaurant(), dish, category);
 			return category;
 		}else{
 			return null;

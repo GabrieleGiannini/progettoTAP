@@ -72,17 +72,17 @@ public class RestaurateurControllerTest {
 	@Test
 	public void changeCategoryToFoodIsInMenuTestCase(){
 		String newCategory = resController.changeCategoryToFood(dish1,"Appetizer");
-		when(dish1.getCategory()).thenReturn(newCategory);
 		verify(database,times(1)).getMenuOf(resProfile.getRestaurant());
-		assertEquals("Appetizer",dish1.getCategory());
+		verify(database, times(1)).updateCategoryToFood(resProfile.getRestaurant(), dish1, "Appetizer");
+		assertEquals("Appetizer",newCategory);
 	}
 	
 	@Test
 	public void changeCategoryToFoodIsNotInMenuTestCase(){
 		String newCategory = resController.changeCategoryToFood(dish2,"Appetizer");
-		when(dish2.getCategory()).thenReturn(newCategory);
 		verify(database,times(1)).getMenuOf(resProfile.getRestaurant());
-		assertEquals(null,dish2.getCategory());
+		verify(database, never()).updateCategoryToFood(any(), any(), any());
+		assertNull(newCategory);
 	}
 
 
