@@ -47,19 +47,19 @@ public class UserControllerTest {
 
 	
 	@Test
-	public void testGetChart(){
-		Cart cart = new Cart(null,null);
+	public void testGetCart(){
+		Cart cart = mock(Cart.class);
 		user.setCart(cart);
 		assertEquals(cart,user.getCart());
 	}
 	
 	@Test
-	public void testSendDishToChart(){
-		Cart cart = new Cart(null,null);
-		Dish dish1 = new Dish("Food1");
+	public void testSendDishToCart(){
+		Cart cart = mock(Cart.class);
+		Dish dish1 = mock(Dish.class);
 		user.setCart(cart);
 		user.sendDishToChart(dish1);
-		assertTrue(user.getCart().contains(dish1));
+		verify(cart, times(1)).add(dish1);
 	}
 	
 	@Test
