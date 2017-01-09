@@ -25,7 +25,7 @@ public class RestaurateurControllerTest {
 		menu = new ArrayList<Dish>();
 		menu.add(dish1);
 		database = mock(Database.class);
-		resProfile = new RestaurateurProfile("IDG","Pass","GabrieleGianniniRes","Via Roma, 1","Firenze","0556509341","gabrielegiannini2@gmail.com",new Restaurant());
+		resProfile = mock(RestaurateurProfile.class);
 		resController = new RestaurateurController(resProfile,database);
 		when(database.getMenuOf(resProfile.getRestaurant())).thenReturn(menu);
 	}
