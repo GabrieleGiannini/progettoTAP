@@ -20,7 +20,7 @@ public class RestaurateurController {
 
 	public double changePriceToFood(Dish dish, double price) {
 		if(getMenuFromDB().contains(dish)){
-			dish.setPrice(price);
+			database.updatePriceToFood(resProfile.getRestaurant(), dish, price);
 			return price;
 		}else{
 			return 0;

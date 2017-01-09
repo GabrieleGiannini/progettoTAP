@@ -10,4 +10,6 @@ public interface Database {
 
 	void addDishToMenu(Restaurant restaurant, Dish dish);
 
+	void updatePriceToFood(Restaurant restaurant, Dish dish1, double price);
+
 }

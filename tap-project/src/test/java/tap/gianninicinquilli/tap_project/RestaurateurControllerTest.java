@@ -56,17 +56,17 @@ public class RestaurateurControllerTest {
 	@Test
 	public void changePriceToFoodIsInMenuTestCase(){
 		double newPrice = resController.changePriceToFood(dish1,7.5);
-		when(dish1.getPrice()).thenReturn(newPrice);
 		verify(database,times(1)).getMenuOf(resProfile.getRestaurant());
-		assertEquals(7.5,dish1.getPrice(),0);
+		verify(database, times(1)).updatePriceToFood(resProfile.getRestaurant(), dish1, 7.5);
+		assertEquals(7.5,newPrice,0);
 	}
 	
 	@Test
 	public void changePriceToFoodIsNotInMenuTestCase(){
 		double newPrice = resController.changePriceToFood(dish2,7.5);
-		when(dish2.getPrice()).thenReturn(newPrice);
 		verify(database,times(1)).getMenuOf(resProfile.getRestaurant());
-		assertEquals(0,dish2.getPrice(),0);
+		verify(database, never()).updatePriceToFood(any(), any(), anyDouble());
+		assertEquals(0,newPrice,0);
 	}
 	
 	@Test
