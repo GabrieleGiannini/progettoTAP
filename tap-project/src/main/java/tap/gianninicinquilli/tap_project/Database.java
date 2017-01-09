@@ -8,4 +8,10 @@ public interface Database {
 
 	List<Restaurant> getRestaurantsList();
 
+	void addDishToMenu(Restaurant restaurant, Dish dish);
+
+	void updatePriceToFood(Restaurant restaurant, Dish dish1, double price);
+
+	void updateCategoryToFood(Restaurant restaurant, Dish dish1, String category);
+
 }
