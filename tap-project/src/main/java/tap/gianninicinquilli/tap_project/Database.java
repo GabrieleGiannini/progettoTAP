@@ -20,4 +20,6 @@ public interface Database {
 
 	void updateCategoryToFood(Restaurant restaurant, Dish dish1, String category);
 
+	List<String> getReviews(Restaurant restaurant);
+
 }

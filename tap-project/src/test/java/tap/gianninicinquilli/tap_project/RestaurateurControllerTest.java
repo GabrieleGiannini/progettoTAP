@@ -85,5 +85,23 @@ public class RestaurateurControllerTest {
 		assertNull(newCategory);
 	}
 
+	@Test
+	public void testEmptyGetReviews(){
+		when(database.getReviews(any(Restaurant.class))).thenReturn(new ArrayList<>());
+		List<String> result = resController.getReviews();
+		verify(database, times(1)).getReviews(resProfile.getRestaurant());
+		assertTrue(result.isEmpty());
+	}
+	
+	@Test
+	public void testNotEmptyGetReviews(){
+		List<String> reviews = new ArrayList<>();
+		reviews.add("Better restaurant in the world!");
+		reviews.add("I prefer MCDonald's");
+		when(database.getReviews(any(Restaurant.class))).thenReturn(reviews);
+		List<String> result = resController.getReviews();
+		verify(database, times(1)).getReviews(resProfile.getRestaurant());
+		assertEquals(reviews, result);
+	}
 
 }
