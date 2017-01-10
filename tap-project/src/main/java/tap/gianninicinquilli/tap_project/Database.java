@@ -22,4 +22,10 @@ public interface Database {
 
 	List<String> getReviews(Restaurant restaurant);
 
+	List<Integer> getAgeBuyersMonth(RestaurateurController resControl);
+
+	List<Double> getPricesOfOrdersMonth(RestaurateurController resControl);
+
+	List<Dish> getFoodSoldMonth(RestaurateurController resControl);
+
 }
