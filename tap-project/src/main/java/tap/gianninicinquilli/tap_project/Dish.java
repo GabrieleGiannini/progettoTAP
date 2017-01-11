@@ -3,10 +3,15 @@ package tap.gianninicinquilli.tap_project;
 public class Dish {
 
 	private String category;
+	private String id;
 	private double price;
+	private String description;
 
-	public Dish(String category) {
+	public Dish(String id, double price, String category, String description) {
+		this.id = id;
+		this.price = price;
 		this.category = category;
+		this.description = description;
 	}
 
 	public void setPrice(double price) {
@@ -23,6 +28,14 @@ public class Dish {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public String getDescription() {
+		return description;
 	}
 
 }

@@ -11,7 +11,7 @@ public class DishTest {
 
 	@Before
 	public void setUp() {
-		dish = new Dish("fakecategory");
+		dish = new Dish("id0", 2.50, "category", "description");
 	}
 
 	@Test
@@ -22,9 +22,18 @@ public class DishTest {
 
 	@Test
 	public void testGetCategory() {
-		assertEquals("fakecategory", dish.getCategory());
+		assertEquals("category", dish.getCategory());
 		dish.setCategory("new");
 		assertEquals("new", dish.getCategory());
 	}
 
+	@Test
+	public void testGetDescription() {
+		assertEquals("description", dish.getDescription());
+	}
+
+	@Test
+	public void testGetId() {
+		assertEquals("id0", dish.getId());
+	}
 }

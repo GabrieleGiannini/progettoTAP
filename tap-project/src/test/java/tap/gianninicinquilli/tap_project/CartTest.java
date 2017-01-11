@@ -15,8 +15,8 @@ public class CartTest {
 	
 	@Before
 	public void setup(){
-		dish1 = spy(new Dish("Food1"));
-		dish2 = spy(new Dish("Food2"));
+		dish1 = mock(Dish.class);
+		dish2 = mock(Dish.class);
 		bank = mock(Bank.class);
 		creditCard = mock(CreditCard.class);
 		cart = new Cart(bank,creditCard);
