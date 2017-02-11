@@ -17,4 +17,5 @@ jdk:
 - oraclejdk8
 
 script:
+- bash script.sh
 - mvn -f tap-project/pom.xml test
