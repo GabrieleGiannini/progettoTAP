@@ -63,10 +63,6 @@ public class StatisticsEvaluationsTest {
 		Dish bestSell = statEval.getBestSellerMonth();
 		assertEquals(dish1,bestSell);
 	}
-	
-	
-	
-
-	
+		
 
 }
