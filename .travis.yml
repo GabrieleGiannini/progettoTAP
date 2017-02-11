@@ -1,6 +1,10 @@
 language: java
 
-sudo: false
+sudo: true
+
+before_script:
+- sudo apt-get install tightvncserver
+- sudo apt-get install expect
 
 cache:
   directories:
@@ -13,4 +17,4 @@ jdk:
 - oraclejdk8
 
 script:
-- mvn -f tap-project/pom.xml clean verify -Pjacoco coveralls:report
+- bash script.sh mvn -f tap-project/pom.xml test
