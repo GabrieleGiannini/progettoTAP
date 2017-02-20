@@ -99,6 +99,20 @@
 			<artifactId>log4j-core</artifactId>
 			<version>2.7</version>
 		</dependency>
+		
+		<dependency>
+      	<groupId>jfree</groupId>
+      	<artifactId>jfreechart</artifactId>
+      	<version>1.0.9</version>
+    	</dependency>
+    	
+    	<dependency>
+  	  	<groupId>org.assertj</groupId>
+  	  	<artifactId>assertj-swing-junit</artifactId>
+  	  	<version>3.5.0</version>
+  	  	<scope>test</scope>
+		</dependency>
+    
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
@@ -126,6 +140,29 @@
 				<artifactId>pitest-maven</artifactId>
 				<version>1.1.11</version>
 			</plugin>
+			
+			<plugin>
+  				<groupId>org.apache.maven.plugins</groupId>
+  				<artifactId>maven-assembly-plugin</artifactId>
+  				<configuration>
+    				<descriptorRefs>
+      				<descriptorRef>jar-with-dependencies</descriptorRef>
+    				</descriptorRefs>
+    				<!--<archive>
+      				<manifest>
+        				<mainClass>com.mycompany.app.App</mainClass>
+      				</manifest>
+    				</archive>-->
+  				</configuration>
+  				<executions>
+    				<execution>
+      				<phase>package</phase>
+      				<goals>
+        				<goal>single</goal>
+      				</goals>
+    				</execution>
+  				</executions>
+				</plugin>			
 
 		</plugins>
 	</build>
