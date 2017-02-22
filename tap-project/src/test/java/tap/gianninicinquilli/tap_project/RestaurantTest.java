@@ -26,7 +26,7 @@ public class RestaurantTest {
 
 	@Test
 	public void testGetAddress() {
-		assertEquals("via Mario Rossi", restaurant.getAddress());
+		assertEquals("via Mario Rossi 12", restaurant.getAddress());
 	}
 
 	@Test
