@@ -88,7 +88,7 @@ public class UserFrameTestIT {
 		}
 	}
 
-	// @Test
+	@Test
 	public void shouldReturnInJlistTheMenuOfARestaurant() {
 		frameFixture.textBox("nameRes").enterText("rest1");
 		frameFixture.button("getMenu").click();
@@ -121,7 +121,7 @@ public class UserFrameTestIT {
 		}
 	}
 
-	// @Test
+	@Test
 	public void dragNdrop() {
 		frameFixture.button("getRev").click();
 		frameFixture.list("resultList").drag(0);
