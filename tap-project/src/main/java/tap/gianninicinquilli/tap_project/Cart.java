@@ -5,20 +5,22 @@ import java.util.List;
 
 import org.mockito.Matchers;
 
-public class Cart extends ArrayList<Dish>{
+public class Cart{
 
 	private Bank bank;
 	private CreditCard creditCard;
+	private List<Dish> dishesList;
 
 	public Cart(Bank bank, CreditCard creditCard) {
 		this.bank = bank;
 		this.creditCard = creditCard;
+		dishesList = new ArrayList<>();
 	}
 
 	public double calculateTotal() {
 		double total = 0;
-		for(int i=0;i<size();i++){
-			total = total + get(i).getPrice();
+		for(int i=0;i<dishesList.size();i++){
+			total = total + dishesList.get(i).getPrice();
 		}
 		return total;
 	}
@@ -30,6 +32,10 @@ public class Cart extends ArrayList<Dish>{
 		if(paymentAcceppted)
 			paymentReceived = bank.receivedPayment(calculateTotal());
 		return paymentReceived;
+	}
+
+	public void add(Dish dish) {
+		dishesList.add(dish);
 	}
 
 
