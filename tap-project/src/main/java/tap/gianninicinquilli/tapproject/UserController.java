@@ -1,4 +1,4 @@
-package tap.gianninicinquilli.tap_project;
+package tap.gianninicinquilli.tapproject;
 
 import java.util.ArrayList;
 import java.util.List;
