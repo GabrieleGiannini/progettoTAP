@@ -35,5 +35,13 @@ public class Cart {
 	public void add(Dish dish) {
 		dishesList.add(dish);
 	}
+	
+	public Dish getDish(int index){
+		return dishesList.get(index);
+	}
+
+	public int size() {
+		return dishesList.size();
+	}
 
 }
