@@ -3,9 +3,7 @@ package tap.gianninicinquilli.tap_project;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.mockito.Matchers;
-
-public class Cart{
+public class Cart {
 
 	private Bank bank;
 	private CreditCard creditCard;
@@ -19,7 +17,7 @@ public class Cart{
 
 	public double calculateTotal() {
 		double total = 0;
-		for(int i=0;i<dishesList.size();i++){
+		for (int i = 0; i < dishesList.size(); i++) {
 			total = total + dishesList.get(i).getPrice();
 		}
 		return total;
@@ -29,7 +27,7 @@ public class Cart{
 		boolean paymentAcceppted;
 		boolean paymentReceived = false;
 		paymentAcceppted = bank.acceptPayment(creditCard);
-		if(paymentAcceppted)
+		if (paymentAcceppted)
 			paymentReceived = bank.receivedPayment(calculateTotal());
 		return paymentReceived;
 	}
@@ -37,6 +35,5 @@ public class Cart{
 	public void add(Dish dish) {
 		dishesList.add(dish);
 	}
-
 
 }
