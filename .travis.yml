@@ -17,4 +17,4 @@ jdk:
 - oraclejdk8
 
 script:
-- bash initDisplay.sh mvn -f tap-project/pom.xml test
+- bash initDisplay.sh mvn -f tap-project/pom.xml clean verify -Pjacoco coveralls:report

@@ -1,4 +1,4 @@
-package tap.gianninicinquilli.tap_project;
+package tap.gianninicinquilli.tapproject;
 
 import static org.junit.Assert.*;
 
@@ -20,8 +20,8 @@ public class RestaurateurControllerTest {
 	
 	@Before
 	public void setup(){
-		dish1 = spy(new Dish("Food1"));
-		dish2 = spy(new Dish("Food2"));
+		dish1 = mock(Dish.class);
+		dish2 = mock(Dish.class);
 		menu = new ArrayList<Dish>();
 		menu.add(dish1);
 		database = mock(Database.class);

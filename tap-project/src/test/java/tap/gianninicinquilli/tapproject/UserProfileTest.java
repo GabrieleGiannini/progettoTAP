@@ -1,4 +1,4 @@
-package tap.gianninicinquilli.tap_project;
+package tap.gianninicinquilli.tapproject;
 
 import static org.junit.Assert.*;
 

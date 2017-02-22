@@ -1,4 +1,4 @@
-package tap.gianninicinquilli.tap_project;
+package tap.gianninicinquilli.tapproject;
 
 import javax.swing.JFrame;
 import javax.swing.GroupLayout;
@@ -6,7 +6,6 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JList;
@@ -16,8 +15,8 @@ import javax.swing.JTextField;
 public class UserFrame extends JFrame{
 	
 	JList list;
-	private String[] restArr;
 	private JTextField textField;
+	
 	public UserFrame(UserController userC) {	
 		super();
 		setVisible(true);
@@ -50,10 +49,11 @@ public class UserFrame extends JFrame{
 				List<Dish> menuList;
 				String[] menu = new String[10];
 				for(int i=0;i<userC.getRestaurantsList().size();i++){
-					if(userC.getRestaurantsList().get(i).getName().equals(textField.getText())){
-							menuList = userC.getRestaurantsList().get(i).getMenu();
+					Restaurant restaurant = userC.getRestaurantsList().get(i);
+					if(restaurant.getName().equals(textField.getText())){
+							menuList = userC.getMenuOf(restaurant);
 							for(int j=0;j<menuList.size();j++){
-								menu[j]=menuList.get(j).getID();
+								menu[j]=menuList.get(j).getDescription();
 							}
 					}
 				}
@@ -94,16 +94,16 @@ public class UserFrame extends JFrame{
 				Cart cart = userC.getCart();
 				String[] carrello = new String[cart.size()];
 				for(int i=0;i<cart.size();i++){
-					carrello[i]=cart.get(i).getID();
+					carrello[i] = cart.getDish(i).getDescription();
 				}
 				list.setListData(carrello);
 				list.setVisible(true);
 			}
 		});
 		
-		JList list_1 = new JList();
-		list_1.setName("dragDrop");
-		list_1.setListData(new String[1]);
+		JList list1 = new JList();
+		list1.setName("dragDrop");
+		list1.setListData(new String[1]);
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -121,7 +121,7 @@ public class UserFrame extends JFrame{
 								.addComponent(btnGetReviews))
 							.addPreferredGap(ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(list_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(list1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(list, GroupLayout.PREFERRED_SIZE, 135, GroupLayout.PREFERRED_SIZE)))
 						.addComponent(btnGetCart))
 					.addContainerGap())
@@ -142,7 +142,7 @@ public class UserFrame extends JFrame{
 							.addComponent(btnGetInformations)))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(list_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(list1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(btnGetReviews, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnGetCart)
