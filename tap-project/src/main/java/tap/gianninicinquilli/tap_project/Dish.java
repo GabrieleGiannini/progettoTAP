@@ -2,15 +2,15 @@ package tap.gianninicinquilli.tap_project;
 
 public class Dish {
 
-	private String foodID;
+	private String category;
 	private double price;
 
-	public Dish(String foodID) {
-		this.foodID = foodID;
+	public Dish(String category) {
+		this.category = category;
 	}
 
-	public void setPrice(double price) {//empty because is stubbed
-		
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 	public double getPrice() {
@@ -18,11 +18,11 @@ public class Dish {
 	}
 
 	public String getCategory() {
-		return null;
+		return category;
 	}
 
-	public void setCategory(String category) {//empty because is stubbed
-		
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 }
