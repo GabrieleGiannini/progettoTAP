@@ -25,4 +25,8 @@ public class Dish {
 		
 	}
 
+	public String getID() {
+		return foodID;
+	}
+
 }

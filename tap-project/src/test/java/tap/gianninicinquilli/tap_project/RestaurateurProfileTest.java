@@ -11,7 +11,7 @@ public class RestaurateurProfileTest {
 	
 	@Before
 	public void setup(){
-		rest = new Restaurant();
+		rest = new Restaurant("rest1");
 		resProfile = new RestaurateurProfile("IDG","Pass","GabrieleGianniniRes","Via Roma, 1","Firenze","0556509341","gabrielegiannini2@gmail.com",rest);
 	}
 
