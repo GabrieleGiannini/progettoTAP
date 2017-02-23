@@ -23,6 +23,8 @@ vncserver ":${NEW_DISPLAY}" -localhost -geometry 1600x1200 -depth 16
 export DISPLAY=:${NEW_DISPLAY}
 
 "$@"
+RESULT=$?
 
 export DISPLAY=${OLD_DISPLAY}
 vncserver -kill ":${NEW_DISPLAY}"
+exit $RESULT
