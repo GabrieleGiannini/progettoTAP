@@ -19,7 +19,8 @@
 		<jacoco.data.file.IT>${project.build.directory}/coverage-reports/jacoco-it.exec</jacoco.data.file.IT>
 		<jacoco.report.path.IT>${project.reporting.outputDirectory}/jacoco-it</jacoco.report.path.IT>
 		<sonar.language>java</sonar.language>
-		<sonar.jacoco.reportPath>${jacoco.data.file}</sonar.jacoco.reportPath>
+		<sonar.jacoco.reportPath>${jacoco.data.file.UT}</sonar.jacoco.reportPath>
+		<sonar.jacoco.itReportPath>${jacoco.data.file.IT}</sonar.jacoco.itReportPath>
 	</properties>
 
 	<profiles>
