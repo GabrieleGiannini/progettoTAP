@@ -68,7 +68,7 @@ public class UserFrameTestIT {
 		restList.add(rest3);
 		database = mock(Database.class);
 		when(database.getRestaurantsList()).thenReturn(restList);
-		when(database.getMenuOf(rest)).thenReturn(menu);
+		when(database.getMenuOf(rest1)).thenReturn(menu);
 		when(database.getReviews(user)).thenReturn(revList);
 		userC = new UserController(database, user);
 		userC.setCart(cart);
