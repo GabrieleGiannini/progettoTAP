@@ -36,4 +36,9 @@ public class DishTest {
 	public void testGetId() {
 		assertEquals("id0", dish.getId());
 	}
+	
+	@Test
+	public void testGetPrice(){
+		assertEquals(2.50,dish.getPrice(),0);
+	}
 }

@@ -13,6 +13,7 @@ public class RestaurateurControllerTest {
 	
 	private RestaurateurController resController;
 	private RestaurateurProfile resProfile;
+	private Restaurant restaurant;
 	private List<Dish> menu;
 	private Database database;
 	private Dish dish2;
@@ -22,12 +23,15 @@ public class RestaurateurControllerTest {
 	public void setup(){
 		dish1 = mock(Dish.class);
 		dish2 = mock(Dish.class);
+		restaurant = mock(Restaurant.class);
 		menu = new ArrayList<Dish>();
 		menu.add(dish1);
 		database = mock(Database.class);
 		resProfile = mock(RestaurateurProfile.class);
 		resController = new RestaurateurController(resProfile,database);
+		when(resProfile.getRestaurant()).thenReturn(restaurant);
 		when(database.getMenuOf(resProfile.getRestaurant())).thenReturn(menu);
+		
 	}
 	
 	@Test
@@ -41,7 +45,6 @@ public class RestaurateurControllerTest {
 	public void addFoodToMenuNotAlreadyExistsTestCase() {
 		List<Dish> menu = new ArrayList<Dish>(this.menu);
 		resController.addFoodToMenu(dish2);
-		menu.add(dish2);
 		verify(database,times(1)).getMenuOf(resProfile.getRestaurant());
 		verify(database, times(1)).addDishToMenu(resProfile.getRestaurant(), dish2);
 	}
