@@ -43,7 +43,6 @@ public class RestaurateurControllerTest {
 
 	@Test
 	public void addFoodToMenuNotAlreadyExistsTestCase() {
-		List<Dish> menu = new ArrayList<Dish>(this.menu);
 		resController.addFoodToMenu(dish2);
 		verify(database,times(1)).getMenuOf(resProfile.getRestaurant());
 		verify(database, times(1)).addDishToMenu(resProfile.getRestaurant(), dish2);
