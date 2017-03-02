@@ -48,5 +48,27 @@ public class CartTest {
 		verify(bank,times(1)).acceptPayment(creditCard);
 		assertFalse(accept);
 	}
+	
+	@Test(expected=IndexOutOfBoundsException.class)
+	public void testGetDishWithWrongIndexThrowException(){
+		cart.getDish(5);
+	}
+	
+	@Test
+	public void testGetDish(){
+		Dish returned = cart.getDish(0);
+		assertEquals(dish1, returned);
+	}
+	
+	@Test
+	public void testSizeOfEmptyCart(){
+		cart = new Cart(bank, creditCard);
+		assertEquals(0, cart.size());
+	}
+	
+	@Test
+	public void testSizeOfNotEmptyCart(){
+		assertEquals(2, cart.size());
+	}
 
 }
