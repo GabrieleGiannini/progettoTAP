@@ -9,7 +9,6 @@ public class Order {
 
 	public Order() {
 		dishes = new ArrayList<>();
-		setTotalPrice(0.0);
 	}
 
 	public void add(Dish dish) {
