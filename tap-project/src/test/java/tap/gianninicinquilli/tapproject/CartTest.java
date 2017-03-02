@@ -34,16 +34,17 @@ public class CartTest {
 	@Test
 	public void testPayAccepted(){
 		when(bank.acceptPayment(creditCard)).thenReturn(true);
-		when(bank.receivedPayment(anyDouble())).thenReturn(true);
+		when(bank.receivedPayment(cart.calculateTotal())).thenReturn(true);
 		boolean accept = cart.pay();
 		verify(bank,times(1)).acceptPayment(creditCard);
+		verify(bank,times(1)).receivedPayment(anyDouble());
 		assertTrue(accept);
 	}
 	
 	@Test
 	public void testPayNotAccepted(){
 		when(bank.acceptPayment(creditCard)).thenReturn(false);
-		when(bank.receivedPayment(anyDouble())).thenReturn(false);
+		when(bank.receivedPayment(cart.calculateTotal())).thenReturn(true);
 		boolean accept = cart.pay();
 		verify(bank,times(1)).acceptPayment(creditCard);
 		assertFalse(accept);
