@@ -149,12 +149,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>2.7</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-swing-junit</artifactId>
 			<version>3.5.0</version>
@@ -163,8 +157,9 @@
 
 		<dependency>
 			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
+			<artifactId>mockito-core</artifactId>
 			<version>1.9.5</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -201,6 +196,7 @@
 					</targetTests>
 					<excludedClasses>
 						<param>tap.gianninicinquilli.tapproject.IT*</param>
+						<param>tap.gianninicinquilli.tapproject.UserFrame</param>
 					</excludedClasses>
 					<mutators>ALL</mutators>
 				</configuration>
