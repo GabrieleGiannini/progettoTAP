@@ -196,6 +196,7 @@
 					</targetTests>
 					<excludedClasses>
 						<param>tap.gianninicinquilli.tapproject.IT*</param>
+						<param>tap.gianninicinquilli.tapproject.UserFrame</param>
 					</excludedClasses>
 					<mutators>ALL</mutators>
 				</configuration>
