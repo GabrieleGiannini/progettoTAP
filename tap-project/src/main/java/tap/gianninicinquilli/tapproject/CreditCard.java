@@ -2,8 +2,7 @@ package tap.gianninicinquilli.tapproject;
 
 public interface CreditCard {
 
-	boolean verifyIsOk();
-
-	boolean getValidity();
+	String getCardNumber();
+	boolean isValid();
 
 }

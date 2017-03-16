@@ -2,7 +2,7 @@ package tap.gianninicinquilli.tapproject;
 
 public interface Bank {
 
-	boolean acceptPayment(CreditCard creditCard);
+	boolean acceptPayment(String creditCardNumber);
 
 	boolean receivedPayment(double d);
 
