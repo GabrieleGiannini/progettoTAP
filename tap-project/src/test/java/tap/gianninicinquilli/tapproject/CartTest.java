@@ -19,6 +19,8 @@ public class CartTest {
 		dish2 = mock(Dish.class);
 		bank = mock(Bank.class);
 		creditCard = mock(CreditCard.class);
+		when(creditCard.getCardNumber()).thenReturn("123");
+		when(creditCard.isValid()).thenReturn(true);
 		cart = new Cart(bank, creditCard);
 		cart.add(dish1);
 		cart.add(dish2);
@@ -49,6 +51,15 @@ public class CartTest {
 		verify(bank, times(1)).acceptPayment(creditCard.getCardNumber());
 		assertFalse(accept);
 	}
+	
+	@Test
+	public void testPaymentDoNothingWhenCreditCardIsExpired(){
+		when(creditCard.isValid()).thenReturn(false);
+		boolean accepted = cart.pay();
+		verify(bank, never()).acceptPayment(anyString());
+		verify(bank, never()).receivedPayment(anyDouble());
+		assertFalse(accepted);
+	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void testGetDishWithWrongIndexThrowException() {
@@ -66,7 +77,7 @@ public class CartTest {
 		cart = new Cart(bank, creditCard);
 		assertEquals(0, cart.size());
 	}
-
+	
 	@Test
 	public void testSizeOfNotEmptyCart() {
 		assertEquals(2, cart.size());

@@ -26,9 +26,12 @@ public class Cart {
 	public boolean pay() {
 		boolean paymentAcceppted;
 		boolean paymentReceived = false;
-		paymentAcceppted = bank.acceptPayment(creditCard.getCardNumber());
-		if (paymentAcceppted)
-			paymentReceived = bank.receivedPayment(calculateTotal());
+		if (creditCard.isValid()) {
+			paymentAcceppted = bank.acceptPayment(creditCard.getCardNumber());
+			if (paymentAcceppted) {
+				paymentReceived = bank.receivedPayment(calculateTotal());
+			}
+		}
 		return paymentReceived;
 	}
 
